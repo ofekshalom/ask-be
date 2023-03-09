@@ -8,6 +8,7 @@ interface Chunk {
   confidence: string;
 }
 interface Answers {
+  id: string;
   confidence: string;
   html: string;
 }
@@ -61,6 +62,7 @@ router.post("/", async (req: express.Request, res: express.Response) => {
       );
 
       answers.push({
+        id: chunk.chunkId,
         confidence: chunk.confidence,
         html: (await chunkResponse).data,
       });
